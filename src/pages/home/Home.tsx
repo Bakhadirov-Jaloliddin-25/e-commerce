@@ -1,10 +1,11 @@
 import Hero from "../../components/hero/Hero";
+import Products from "../../components/products/Products";
 
 const Home = () => {
   return (
     <>
       <Hero />
-      <div className="h-screen"></div>
+      <Products />
     </>
   );
 };

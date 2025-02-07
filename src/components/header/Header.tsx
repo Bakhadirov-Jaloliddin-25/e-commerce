@@ -11,7 +11,7 @@ const Header = () => {
   return (
     <>
       <UpperHeader />
-      <div className="bg-white border-b sticky top-0 left-0">
+      <div className="bg-white border-b sticky top-0 left-0 z-50">
         <div className="container flex justify-between items-center py-4">
           <div
             className="font-inter text-3xl font-bold cursor-pointer hover:text-gray-600 duration-150 select-none"

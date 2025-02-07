@@ -4,7 +4,7 @@ import { GoArrowRight } from "react-icons/go";
 
 const Hero = () => {
   return (
-    <div className="container bg-primary flex gap-20 mt-10 px-16 rounded-sm">
+    <div className="container bg-primary flex gap-20 my-10 px-16 rounded-sm">
       <div className="flex flex-col py-16 gap-5">
         <div className="flex items-center gap-4">
           <img src={apple} alt="apple.png" />

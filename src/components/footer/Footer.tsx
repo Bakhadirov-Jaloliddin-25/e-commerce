@@ -28,7 +28,7 @@ const Footer = () => {
                   className="w-[170px] outline-none bg-black pl-4"
                 />
                 <GoPaperAirplane
-                  className="text-2xl mr-3 cursor-pointer"
+                  className="text-2xl mr-3 cursor-pointer hover:text-gray-600 duration-150"
                   onClick={() => navigate("/")}
                 />
               </div>
