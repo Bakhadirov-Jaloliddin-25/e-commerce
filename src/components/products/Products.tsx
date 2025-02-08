@@ -7,11 +7,11 @@ import CartBtn from "./CartBtn";
 const Products = () => {
   const { data } = useGetProductsQuery("");
   return (
-    <div className="container flex flex-wrap justify-start gap-[49.3px] mt-7">
+    <div className="container flex flex-wrap justify-start gap-[49.3px] my-7">
       {/* <MyLoader /> */}
       {data?.products.map((product: IProduct) => (
         <div key={product.id} className="w-[290px] h-[322px]">
-          <div className="h-[250px] bg-[#F5F5F5] flex justify-center items-center relative group overflow-hidden">
+          <div className="h-[250px] bg-[#F5F5F5] flex justify-center items-center relative group overflow-hidden rounded-sm">
             <img
               src={product.images[1] ? product.images[1] : product.images[0]}
               alt={product.title}

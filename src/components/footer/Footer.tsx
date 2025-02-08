@@ -11,7 +11,7 @@ import { RiLinkedinLine } from "react-icons/ri";
 const Footer = () => {
   const navigate = useNavigate();
   return (
-    <div className="bg-primary pt-20 flex flex-col gap-16">
+    <div className="bg-primary pt-20 flex flex-col gap-16 mt-24">
       <div className="container grid grid-cols-5 font-poppins w-full">
         <div className="col-span-5 bg-primary -mx-4 px-4">
           <div className="flex justify-between">
@@ -89,7 +89,7 @@ const Footer = () => {
       <div className="flex justify-center items-center gap-1 border-t border-zinc-800 py-5 text-white">
         <BsCCircle className="text-zinc-700" />
         <p className="text-zinc-700">
-          Copyright Rimel 2022. All right reserved
+          Copyright Bakhadirov 2025. All right reserved
         </p>
       </div>
     </div>
