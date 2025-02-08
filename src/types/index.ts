@@ -5,5 +5,6 @@ export interface IProduct {
   price: number;
   rating: number;
   stock: number;
+  is_liked: boolean;
   images: string[];
 }
