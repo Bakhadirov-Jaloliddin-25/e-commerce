@@ -2,6 +2,11 @@ import { useRoutes } from "react-router-dom";
 import Home from "../pages/home/Home";
 import Layout from "../layout/Layout";
 import NotFound from "../pages/notfound/Notfound";
+import Contact from "../pages/contact/Contact";
+import About from "../pages/about/About";
+import SignUp from "../pages/sign-up/SignUp";
+import Cart from "../pages/cart/Cart";
+import Wishlist from "../pages/wishlist/Wishlist";
 
 const Routers = () => {
   return (
@@ -10,7 +15,14 @@ const Routers = () => {
         {
           path: "/",
           element: <Layout />,
-          children: [{ path: "/", element: <Home /> }],
+          children: [
+            { path: "/", element: <Home /> },
+            { path: "/contact", element: <Contact /> },
+            { path: "/about", element: <About /> },
+            { path: "/sign-up", element: <SignUp /> },
+            { path: "/cart", element: <Cart /> },
+            { path: "/wishlist", element: <Wishlist /> },
+          ],
         },
         {
           path: "*",

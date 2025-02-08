@@ -37,9 +37,18 @@ const Header = () => {
               />
               <IoSearchOutline className="w-7 h-7" />
             </div>
-            <GoHeart className="w-7 h-7 cursor-pointer hover:text-gray-500 duration-150" />
-            <IoCartOutline className="w-7 h-7 cursor-pointer hover:text-gray-500 duration-150" />
-            <LuUser className="w-7 h-7 cursor-pointer hover:text-gray-500 duration-150" />
+            <GoHeart
+              onClick={() => navigate("/wishlist")}
+              className="w-7 h-7 cursor-pointer hover:text-gray-500 duration-150"
+            />
+            <IoCartOutline
+              onClick={() => navigate("/cart")}
+              className="w-7 h-7 cursor-pointer hover:text-gray-500 duration-150"
+            />
+            <LuUser
+              onClick={() => navigate("/sign-up")}
+              className="w-7 h-7 cursor-pointer hover:text-gray-500 duration-150"
+            />
             <Switch />
           </div>
         </div>

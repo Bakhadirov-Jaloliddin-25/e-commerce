@@ -2,11 +2,13 @@ import { useGetProductsQuery } from "../../redux/api/products";
 import { IProduct } from "../../types";
 import Stars from "../stars/Stars";
 import CartBtn from "./CartBtn";
+// import MyLoader from "./Skeleton";
 
 const Products = () => {
   const { data } = useGetProductsQuery("");
   return (
     <div className="container flex flex-wrap justify-start gap-[49.3px] mt-7">
+      {/* <MyLoader /> */}
       {data?.products.map((product: IProduct) => (
         <div key={product.id} className="w-[290px] h-[322px]">
           <div className="h-[250px] bg-[#F5F5F5] flex justify-center items-center relative group overflow-hidden">

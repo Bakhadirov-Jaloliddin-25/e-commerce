@@ -15,7 +15,7 @@ const Hero = () => {
         <div className="w-[290px] text-white text-5xl leading-[60px] font-semibold font-inter">
           Up to 10% off Voucher
         </div>
-        <div className="w-[110px] text-white text-[16px] font-medium flex gap-2 items-center">
+        <div className="w-[110px] text-white text-[16px] font-medium flex gap-2 items-center cursor-pointer hover:brightness-75 duration-150">
           <p className="border-b-2 pb-1">Shop Now</p>
           <GoArrowRight className="text-2xl" />
         </div>
