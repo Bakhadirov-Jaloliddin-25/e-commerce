@@ -5,12 +5,12 @@ import { useState, useEffect } from "react";
 import { TbTruckDelivery } from "react-icons/tb";
 import { MdOutlineChangeCircle } from "react-icons/md";
 import { useGetSingleProductQuery } from "../../redux/api/products";
-// import LikeBtn from "../../components/products/LikeBtn";
+import LikeBtn from "../../components/products/LikeBtn";
 // import SkeletonDetail from "./SkeletonDetail";
 
 const Detail = () => {
   const { id } = useParams();
-  const { data: product } = useGetSingleProductQuery(Number(id));
+  const { data: product, isLoading } = useGetSingleProductQuery(Number(id));
   const [mainImage, setMainImage] = useState("");
   const [selectedSize, setSelectedSize] = useState("");
   const [quantity, setQuantity] = useState(1);
@@ -21,9 +21,7 @@ const Detail = () => {
     }
   }, [product]);
 
-  // if (isLoading) {
-  //   return <SkeletonDetail />;
-  // }
+  if (isLoading) return <p>Loading...</p>;
 
   if (!product) {
     return <div className="text-center py-10">Product not found.</div>;
@@ -116,9 +114,7 @@ const Detail = () => {
             Buy Now
           </button>
 
-          {/* <div className="border rounded-lg">
-            <LikeBtn product={product} form="rounded-lg" />
-          </div> */}
+          <LikeBtn product={product} />
         </div>
         <div className="mt-6 border pt-4 border-gray-500 rounded">
           <div className="flex items-center gap-2 mb-2">

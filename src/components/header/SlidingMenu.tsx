@@ -12,11 +12,8 @@ const SlidingMenu = ({ isOpen }: { isOpen: any }) => {
       >
         <ul className="flex flex-col justify-center items-center gap-4 p-6">
           {links.map((link) => (
-            <NavLink to={link.path}>
-              <li
-                key={link.path}
-                className="hover:text-gray-300 cursor-pointer text-lg font-poppins max-[430px]:text-base"
-              >
+            <NavLink to={link.path} key={link.path}>
+              <li className="hover:text-gray-300 cursor-pointer text-lg font-poppins max-[430px]:text-base">
                 {link.title}
               </li>
             </NavLink>

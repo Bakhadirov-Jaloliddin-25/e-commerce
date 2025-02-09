@@ -7,17 +7,25 @@ export interface ICartProduct extends IProduct {
 
 export interface CartState {
   value: ICartProduct[];
+  isLoading: boolean;
 }
 
 const cartStore = localStorage.getItem("cart");
 const initialState: CartState = {
   value: cartStore ? JSON.parse(cartStore) : [],
+  isLoading: false,
 };
 
 export const cartSlice = createSlice({
   name: "cart",
   initialState,
   reducers: {
+    startLoading(state) {
+      state.isLoading = true;
+    },
+    stopLoading(state) {
+      state.isLoading = false;
+    },
     addCart(state, action: PayloadAction<IProduct>) {
       let index = state.value.findIndex(
         (item) => item.id === action.payload.id
@@ -53,6 +61,8 @@ export const cartSlice = createSlice({
 });
 
 export const {
+  startLoading,
+  stopLoading,
   addCart,
   incrementAmountCart,
   clearCart,

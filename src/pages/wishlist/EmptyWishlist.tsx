@@ -1,16 +1,16 @@
-import { useNavigate } from "react-router-dom";
-// import emptyWishlistImage from "@/assets/images/wish-list.png";
+import { NavLink } from "react-router-dom";
+import NotFoundBtn from "../notfound/NotFoundBtn";
+import empty_wishlist from "../../assets/images/empty_wishlist.png";
 
 const EmptyWishlist = () => {
-  const navigate = useNavigate();
-
   return (
-    <div className="flex flex-col items-center justify-center text-center p-6 sm:p-8 h-[500px] sm:h-[600px]">
-      {/* <img
-        src={emptyWishlistImage}
+    <div className="flex flex-col items-center justify-center p-6 sm:p-8 h-[500px] sm:h-[600px]">
+      <img
+        src={empty_wishlist}
         alt="Empty Wishlist"
-        className="w-32 sm:w-48 md:w-60 mb-6 opacity-80"
-      /> */}
+        className="max-w-full h-auto sm:w-48 md:w-60 mb-6"
+      />
+
       <h1 className="text-xl sm:text-2xl md:text-3xl font-bold text-gray-800 dark:text-white mb-2 sm:mb-4">
         Your Wishlist is Empty
       </h1>
@@ -19,12 +19,9 @@ const EmptyWishlist = () => {
         Explore our collection and add your favorite items to your wishlist!
       </p>
 
-      <button
-        className="px-3 sm:px-4 py-1 lg:text-2xl lg:font-medium sm:py-2 bg-[#B88E2F] text-white rounded-md shadow-md hover:bg-[#a07424] transition duration-300 text-sm sm:text-base"
-        onClick={() => navigate("/")}
-      >
-        Go Home
-      </button>
+      <NavLink to={"/"}>
+        <NotFoundBtn title={"See Products"} />
+      </NavLink>
     </div>
   );
 };
