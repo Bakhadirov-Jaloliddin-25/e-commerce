@@ -1,3 +1,4 @@
+import { memo } from "react";
 import { IProduct } from "../../types";
 import Stars from "../stars/Stars";
 import CartBtn from "./CartBtn";
@@ -52,4 +53,4 @@ const Products = ({ data, title }: { data: any; title: any }) => {
   );
 };
 
-export default Products;
+export default memo(Products);

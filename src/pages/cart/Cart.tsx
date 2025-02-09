@@ -12,6 +12,7 @@ import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import EmptyCart from "./EmptyCart";
 import Loader from "../../components/loader/Loader";
+import CheckoutBtn from "./CheckoutBtn";
 
 const Cart = () => {
   const cart = useSelector((state: RootState) => state.cart.value);
@@ -54,11 +55,11 @@ const Cart = () => {
   }
 
   return (
-    <div className="container p-4 flex flex-col lg:flex-row items-start gap-6 bg-white dark:bg-black text-black mb-72">
+    <div className="container p-4 flex flex-col lg:flex-row items-start gap-6 bg-white text-black mb-72 font-poppins">
       <div className="w-full lg:w-2/3 overflow-x-auto">
         <table className="w-full table-auto text-left min-w-[600px]">
           <thead>
-            <tr className="font-semibold text-base bg-gray-200 dark:bg-gray-800">
+            <tr className="font-semibold text-base bg-zinc-950 text-white">
               <th className="px-4 py-3 text-center">Product</th>
               <th className="px-4 py-3 text-center">Price</th>
               <th className="px-4 py-3 text-center">Quantity</th>
@@ -91,9 +92,9 @@ const Cart = () => {
                         onClick={() =>
                           dispatch(decrementAmountCart(product.id))
                         }
-                        className="px-3 py-2 bg-gray-300 dark:bg-gray-700 rounded-md text-sm md:text-base"
+                        className="w-[24px] flex justify-center items-center px-4 py-1 bg-zinc-900 text-white rounded-md text-sm md:text-base"
                       >
-                        −
+                        -
                       </button>
                       <span className="px-3 py-2 text-sm md:text-base">
                         {selectedAmount}
@@ -103,7 +104,7 @@ const Cart = () => {
                         onClick={() =>
                           dispatch(incrementAmountCart(product.id))
                         }
-                        className="px-3 py-2 bg-gray-300 dark:bg-gray-700 rounded-md text-sm md:text-base"
+                        className="w-[24px] flex justify-center items-center px-4 py-1 bg-zinc-900 text-white rounded-md text-sm md:text-base"
                       >
                         +
                       </button>
@@ -115,7 +116,7 @@ const Cart = () => {
                   <td className="px-3 py-4 text-center">
                     <button
                       onClick={() => dispatch(deleteCart(product.id))}
-                      className="bg-red-500 text-white p-2 rounded-md hover:bg-red-600"
+                      className="text-black p-2 rounded-md hover:bg-red-600 hover:text-white duration-300"
                     >
                       <IoTrashOutline size={18} />
                     </button>
@@ -127,19 +128,14 @@ const Cart = () => {
         </table>
       </div>
 
-      <div className="w-full lg:w-1/3 bg-gray-100 dark:bg-gray-800 p-4 rounded-md shadow-md">
+      <div className="w-full lg:w-1/3 bg-zinc-900 text-white p-4 rounded-md shadow-md">
         <h3 className="text-2xl font-bold mb-6 text-center">Cart Totals</h3>
-        <div className="flex justify-between mb-4">
+        <div className="flex items-center gap-2 mb-4">
           <p className="text-lg font-bold">Price:</p>
           <p>${total.toFixed(2)}</p>
         </div>
-        <div className="flex justify-center">
-          <button
-            onClick={handleCheckout}
-            className="w-full py-3 text-lg font-semibold bg-black text-white rounded-lg hover:bg-gray-800"
-          >
-            Check Out
-          </button>
+        <div className="flex justify-center" onClick={handleCheckout}>
+          <CheckoutBtn />
         </div>
       </div>
     </div>
