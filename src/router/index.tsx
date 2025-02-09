@@ -6,7 +6,7 @@ import Contact from "../pages/contact/Contact";
 import About from "../pages/about/About";
 import SignUp from "../pages/register/sign-up/SignUp";
 import Cart from "../pages/cart/Cart";
-import Wishlist from "../pages/wishlist/Wishlist";
+// import Wishlist from "../pages/wishlist/Wishlist";
 import SignIn from "../pages/register/sign-in/SignIn";
 import { SuspenseContainer } from "../config";
 import Detail from "../pages/detail/Detail";
@@ -19,13 +19,62 @@ const Routers = () => {
           path: "/",
           element: <Layout />,
           children: [
-            { path: "/", element: <Home /> },
-            { path: "/contact", element: <Contact /> },
-            { path: "/about", element: <About /> },
-            { path: "/sign-up", element: <SignUp /> },
-            { path: "/sign-in", element: <SignIn /> },
-            { path: "/cart", element: <Cart /> },
-            { path: "/wishlist", element: <Wishlist /> },
+            {
+              path: "/",
+              element: (
+                <SuspenseContainer>
+                  <Home />
+                </SuspenseContainer>
+              ),
+            },
+            {
+              path: "/contact",
+              element: (
+                <SuspenseContainer>
+                  <Contact />
+                </SuspenseContainer>
+              ),
+            },
+            {
+              path: "/about",
+              element: (
+                <SuspenseContainer>
+                  <About />
+                </SuspenseContainer>
+              ),
+            },
+            {
+              path: "/sign-up",
+              element: (
+                <SuspenseContainer>
+                  <SignUp />
+                </SuspenseContainer>
+              ),
+            },
+            {
+              path: "/sign-in",
+              element: (
+                <SuspenseContainer>
+                  <SignIn />
+                </SuspenseContainer>
+              ),
+            },
+            {
+              path: "/cart",
+              element: (
+                <SuspenseContainer>
+                  <Cart />
+                </SuspenseContainer>
+              ),
+            },
+            // {
+            //   path: "/wishlist",
+            //   element: (
+            //     <SuspenseContainer>
+            //       <Wishlist />
+            //     </SuspenseContainer>
+            //   ),
+            // },
             {
               path: "/product/:id",
               element: (
@@ -38,7 +87,11 @@ const Routers = () => {
         },
         {
           path: "*",
-          element: <NotFound />,
+          element: (
+            <SuspenseContainer>
+              <NotFound />
+            </SuspenseContainer>
+          ),
         },
       ])}
     </>

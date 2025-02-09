@@ -8,3 +8,11 @@ export interface IProduct {
   is_liked: boolean;
   images: string[];
 }
+
+export interface ICustomer {
+  id: number;
+  name: string;
+  email: string;
+  password: string;
+  token: string;
+}
