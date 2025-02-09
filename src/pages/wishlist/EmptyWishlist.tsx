@@ -1,16 +1,16 @@
 import { useNavigate } from "react-router-dom";
-import emptyWishlistImage from "@/assets/images/wish-list.png";
+// import emptyWishlistImage from "@/assets/images/wish-list.png";
 
 const EmptyWishlist = () => {
   const navigate = useNavigate();
 
   return (
     <div className="flex flex-col items-center justify-center text-center p-6 sm:p-8 h-[500px] sm:h-[600px]">
-      <img
+      {/* <img
         src={emptyWishlistImage}
         alt="Empty Wishlist"
         className="w-32 sm:w-48 md:w-60 mb-6 opacity-80"
-      />
+      /> */}
       <h1 className="text-xl sm:text-2xl md:text-3xl font-bold text-gray-800 dark:text-white mb-2 sm:mb-4">
         Your Wishlist is Empty
       </h1>

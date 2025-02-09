@@ -6,7 +6,7 @@ import Contact from "../pages/contact/Contact";
 import About from "../pages/about/About";
 import SignUp from "../pages/register/sign-up/SignUp";
 import Cart from "../pages/cart/Cart";
-// import Wishlist from "../pages/wishlist/Wishlist";
+import Wishlist from "../pages/wishlist/Wishlist";
 import SignIn from "../pages/register/sign-in/SignIn";
 import { SuspenseContainer } from "../config";
 import Detail from "../pages/detail/Detail";
@@ -67,14 +67,14 @@ const Routers = () => {
                 </SuspenseContainer>
               ),
             },
-            // {
-            //   path: "/wishlist",
-            //   element: (
-            //     <SuspenseContainer>
-            //       <Wishlist />
-            //     </SuspenseContainer>
-            //   ),
-            // },
+            {
+              path: "/wishlist",
+              element: (
+                <SuspenseContainer>
+                  <Wishlist />
+                </SuspenseContainer>
+              ),
+            },
             {
               path: "/product/:id",
               element: (

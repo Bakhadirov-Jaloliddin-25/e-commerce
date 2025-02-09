@@ -1,7 +1,7 @@
 import { IProduct } from "../../types";
 import Stars from "../stars/Stars";
 import CartBtn from "./CartBtn";
-// import LikeBtn from "./LikeBtn";
+import LikeBtn from "./LikeBtn";
 import SeeBtn from "./SeeBtn";
 // import MyLoader from "./Skeleton";
 
@@ -15,7 +15,7 @@ const Products = ({ data, title }: { data: any; title: any }) => {
           className="object-contain w-full h-[200px]"
         />
         <div className="absolute top-2 flex flex-col gap-2 right-[-50px] group-hover:right-2 opacity-0 group-hover:opacity-100 duration-300 ease-in-out">
-          {/* <LikeBtn product={product} /> */}
+          <LikeBtn product={product} />
           <SeeBtn product={product} />
         </div>
         <div className="absolute bottom-[-50px] group-hover:bottom-0 duration-300 ease-in-out">
