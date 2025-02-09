@@ -10,7 +10,7 @@ import { useGetSingleProductQuery } from "../../redux/api/products";
 
 const Detail = () => {
   const { id } = useParams();
-  const { data: product,  } = useGetSingleProductQuery(Number(id));
+  const { data: product, isLoading } = useGetSingleProductQuery(Number(id));
   const [mainImage, setMainImage] = useState("");
   const [selectedSize, setSelectedSize] = useState("");
   const [quantity, setQuantity] = useState(1);
