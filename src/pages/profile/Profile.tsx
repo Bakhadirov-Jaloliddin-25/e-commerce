@@ -35,7 +35,7 @@ const Profile = () => {
 
   return (
     <div className="container flex flex-col py-6 md:py-10 font-poppins">
-      <div className="flex justify-between pb-12 ">
+      <div className="flex justify-between pb-12 max-[616px]:px-3">
         <div className="flex gap-4">
           <p
             onClick={() => navigate("/")}
@@ -50,7 +50,7 @@ const Profile = () => {
           Welcome! <span className="text-red-500">{data?.firstName}</span>
         </p>
       </div>
-      <div className="flex">
+      <div className="flex max-[616px]:px-3">
         <aside className="w-full md:w-1/4 md:pr-8 pb-6">
           <h2 className="text-lg font-semibold mb-4">Manage My Account</h2>
           <ul className="space-y-2 text-gray-500">
