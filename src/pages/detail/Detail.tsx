@@ -1,11 +1,17 @@
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
-// import { useGetProductByIdQuery } from "../../redux/api/product-api";
-// import Review from "../../components/products/Review";
 import { TbTruckDelivery } from "react-icons/tb";
 import { MdOutlineChangeCircle } from "react-icons/md";
 import { useGetSingleProductQuery } from "../../redux/api/products";
 import LikeBtn from "../../components/products/LikeBtn";
+import Loader from "../../components/loader/Loader";
+import {
+  addCart,
+  decrementAmountCart,
+  incrementAmountCart,
+} from "../../redux/features/cart-slice";
+import { useDispatch } from "react-redux";
+import Stars from "../../components/stars/Stars";
 // import SkeletonDetail from "./SkeletonDetail";
 
 const Detail = () => {
@@ -15,13 +21,25 @@ const Detail = () => {
   const [selectedSize, setSelectedSize] = useState("");
   const [quantity, setQuantity] = useState(1);
 
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
   useEffect(() => {
     if (product?.images) {
       setMainImage(product.images[0]);
     }
   }, [product]);
 
-  if (isLoading) return <p>Loading...</p>;
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  if (isLoading)
+    return (
+      <div className="h-[55vh] flex justify-center items-center">
+        <Loader />
+      </div>
+    );
 
   if (!product) {
     return <div className="text-center py-10">Product not found.</div>;
@@ -39,16 +57,16 @@ const Detail = () => {
   };
 
   return (
-    <div className="max-w-6xl mx-auto px-4 py-10 grid md:grid-cols-2 gap-10">
+    <div className="max-w-6xl mx-auto px-4 py-10 mt-10 grid md:grid-cols-2 gap-10 font-poppins">
       <div className="flex flex-col md:flex-row gap-4">
-        <div className="flex md:flex-col gap-2 overflow-y-auto max-h-96">
+        <div className="flex md:flex-col gap-2 overflow-y-auto max-h-[500px]">
           {product.images.map((img: any, index: any) => (
             <img
               key={index}
               src={img}
               alt={product.title}
-              className={`w-20 h-20 object-cover rounded-lg cursor-pointer border border-gray-300 transition-all duration-300 ${
-                mainImage === img ? "border-red-500" : ""
+              className={`w-40 h-40 object-contain rounded-lg cursor-pointer border border-gray-200 transition-all duration-300 ${
+                mainImage === img ? "border-black" : ""
               }`}
               onClick={() => setMainImage(img)}
             />
@@ -58,17 +76,16 @@ const Detail = () => {
           <img
             src={mainImage}
             alt={product.title}
-            className="w-full h-auto max-h-[500px] object-cover rounded-lg shadow-md"
+            className="w-full h-auto min-h-[500px] max-h-[500px] object-contain rounded-lg border"
           />
         </div>
       </div>
       <div>
         <h1 className="text-2xl font-bold">{product.title}</h1>
-        {/* <p className="text-gray-500 text-sm mt-1">{product.category}</p> */}
-        <div className="flex items-center mt-2">
-          {/* <Review rating={product.rating} review={product.reviews.length} /> */}
-          <p className="text-gray-500"> reviews</p>
-          <p className="text-green-500">In stock: {product.stock}</p>
+        <div className="flex items-center mt-2 gap-2">
+          <Stars rating={product.rating} />
+          <span>|</span>
+          <p className="text-emerald-500">In stock: {product.stock}</p>
         </div>
         <div>
           <span className="text-lg font-semibold text-black">
@@ -83,8 +100,8 @@ const Detail = () => {
               <button
                 key={size}
                 onClick={() => setSelectedSize(size)}
-                className={`px-3 py-1 border rounded-lg hover:bg-gray-200 transition-all duration-200 ${
-                  selectedSize === size ? "bg-red-500 text-white" : ""
+                className={`px-3 py-1 border rounded-lg hover:bg-white hover:text-black hover:border-black transition-all duration-200 ${
+                  selectedSize === size ? "bg-black text-white" : ""
                 }`}
               >
                 {size}
@@ -93,31 +110,42 @@ const Detail = () => {
           </div>
         </div>
         <div className="mt-6 flex items-center gap-4">
-          <div className="flex items-center border rounded-lg overflow-hidden">
+          <div className="flex items-center border rounded-[4px] overflow-hidden">
             <button
-              className="px-3 py-1 border-r hover:bg-red-500 hover:text-white"
-              onClick={() => handleQuantityChange("decrease")}
+              className="px-3 py-1 border-r hover:bg-black hover:text-white cursor-pointer duration-150"
+              onClick={() => {
+                handleQuantityChange("decrease"),
+                  dispatch(decrementAmountCart(product.id));
+              }}
               disabled={quantity === 1}
             >
               -
             </button>
             <span className="px-4">{quantity}</span>
             <button
-              className="px-3 py-1 border-l hover:bg-red-500 hover:text-white"
-              onClick={() => handleQuantityChange("increase")}
+              className="px-3 py-1 border-l hover:bg-black hover:text-white cursor-pointer duration-150"
+              onClick={() => {
+                handleQuantityChange("increase"),
+                  dispatch(incrementAmountCart(product.id));
+              }}
               disabled={quantity >= product.stock}
             >
               +
             </button>
           </div>
-          <button className="bg-red-500 text-white px-6 py-2 rounded-lg hover:bg-red-600">
+          <button
+            onClick={() => {
+              dispatch(addCart(product)), navigate("/cart");
+            }}
+            className="hover:bg-black hover:text-white px-6 py-2 rounded-[4px] border bg-white text-black border-black duration-150"
+          >
             Buy Now
           </button>
 
           <LikeBtn product={product} />
         </div>
-        <div className="mt-6 border pt-4 border-gray-500 rounded">
-          <div className="flex items-center gap-2 mb-2">
+        <div className="mt-6 border border-gray-500 rounded">
+          <div className="flex items-center gap-2 mb-2 p-4 border-b border-gray-500">
             <TbTruckDelivery className="text-xl" />
             <div>
               <h2 className="font-semibold">Free Delivery</h2>
@@ -126,7 +154,7 @@ const Detail = () => {
               </p>
             </div>
           </div>
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2 p-4 pt-3">
             <MdOutlineChangeCircle className="text-xl" />
             <div>
               <h2 className="font-semibold">Return Delivery</h2>

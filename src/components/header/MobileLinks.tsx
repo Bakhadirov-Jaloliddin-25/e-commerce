@@ -44,10 +44,10 @@ const MobileLinks = () => {
           <p className="text-sm">Cart</p>
         </div>
       </NavLink>
-      <NavLink to={"/profile"}>
+      <NavLink to={"/auth/profile"}>
         <div
           className={`w-[63px] flex flex-col justify-center items-center p-1 border-2 ${
-            isActive("/profile")
+            isActive("/auth/profile")
               ? "border-gray-200 bg-gray-200"
               : "border-transparent"
           } rounded-lg`}

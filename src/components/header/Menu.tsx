@@ -22,7 +22,7 @@ const Menu = () => {
           isOpen ? "border-b" : ""
         }`}
       >
-        <SlidingMenu isOpen={isOpen} />
+        <SlidingMenu isOpen={isOpen} setIsOpen={setIsOpen} />
       </div>
     </StyledWrapper>
   );
