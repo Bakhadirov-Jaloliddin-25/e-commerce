@@ -55,7 +55,7 @@ const Cart = () => {
   }
 
   return (
-    <div className="container p-4 flex flex-col lg:flex-row items-start gap-6 bg-white text-black mb-72 font-poppins">
+    <div className="container p-4 flex flex-col lg:flex-row items-start gap-6 mt-10 bg-white text-black mb-72 font-poppins">
       <div className="w-full lg:w-2/3 overflow-x-auto">
         <table className="w-full table-auto text-left min-w-[600px]">
           <thead>

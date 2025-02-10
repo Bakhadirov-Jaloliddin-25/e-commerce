@@ -15,7 +15,7 @@ const CheckoutBtn = () => {
 
 const StyledWrapper = styled.div`
   .Btn {
-    width: 380px;
+    width: 310px;
     height: 60px;
     display: flex;
     align-items: center;

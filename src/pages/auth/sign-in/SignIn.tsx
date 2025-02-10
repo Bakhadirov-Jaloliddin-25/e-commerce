@@ -5,7 +5,7 @@ import { saveToken } from "../../../redux/features/token-slice";
 import sign_photo from "../../../assets/images/sign_photo.png";
 
 const SignIn = () => {
-  const [username, setUsername] = useState(""); // username kiritish kerak
+  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const dispatch = useDispatch();
@@ -31,7 +31,7 @@ const SignIn = () => {
       }
 
       const data = await response.json();
-      dispatch(saveToken(data.accessToken)); // Token Redux-ga saqlanadi
+      dispatch(saveToken(data.accessToken));
       navigate("/auth/profile");
     } catch (err) {
       setError("Something went wrong. Please try again.");
@@ -42,8 +42,8 @@ const SignIn = () => {
     <div className="container flex flex-col lg:flex-row mt-10 mb-20 gap-10 items-center">
       <div className="w-full lg:w-1/2">
         <img
-          src="https://via.placeholder.com/400x300"
-          alt={sign_photo}
+          src={sign_photo}
+          alt="sign_photo"
           className="w-full max-w-md mx-auto lg:max-w-full"
         />
       </div>
