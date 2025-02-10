@@ -68,7 +68,7 @@ const Profile = () => {
           </Link>
         </aside>
         <div className="max-w-6xl w-[870px] mx-auto bg-white p-6 md:p-8 rounded-lg shadow-md">
-          <div className="w-[710px] flex flex-col md:flex-row justify-center items-center">
+          <div className="flex flex-col md:flex-row justify-center items-center">
             <div className="w-full md:w-3/4 mt-6 md:mt-0">
               <h2 className="text-xl font-semibold text-red-500 mb-6">
                 Edit Your Profile
