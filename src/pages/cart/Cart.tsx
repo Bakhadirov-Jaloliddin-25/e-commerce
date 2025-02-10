@@ -74,7 +74,11 @@ const Cart = () => {
                 <tr key={product.id} className="border-b">
                   <td className="px-3 py-4 flex items-center gap-3">
                     <img
-                      src={product.images?.[0] || "default-image.jpg"}
+                      src={
+                        product.images?.[1]
+                          ? product.images?.[1]
+                          : product.images?.[0] || "default-image.jpg"
+                      }
                       alt={product.title}
                       className="w-12 h-12 object-cover rounded-lg"
                     />
