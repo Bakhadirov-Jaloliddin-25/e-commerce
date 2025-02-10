@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { saveToken } from "../../../redux/features/token-slice";
+import sign_photo from "../../../assets/images/sign_photo.png";
 
 const SignIn = () => {
   const [username, setUsername] = useState(""); // username kiritish kerak
@@ -42,7 +43,7 @@ const SignIn = () => {
       <div className="w-full lg:w-1/2">
         <img
           src="https://via.placeholder.com/400x300"
-          alt="sign_photo"
+          alt={sign_photo}
           className="w-full max-w-md mx-auto lg:max-w-full"
         />
       </div>

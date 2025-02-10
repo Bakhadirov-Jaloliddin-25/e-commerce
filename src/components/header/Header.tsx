@@ -4,22 +4,19 @@ import UpperHeader from "./UpperHeader";
 import { GoHeart } from "react-icons/go";
 import { IoCartOutline, IoSearchOutline } from "react-icons/io5";
 import { LuUser } from "react-icons/lu";
-// import { useState } from "react";
-// import { useSelector } from "react-redux";
-// import { RootState } from "@reduxjs/toolkit/query";
-// import { useCheckTokenQuery } from "../../redux/api/customer-api";
 import Menu from "./Menu";
 // import SlidingMenu from "./SlidingMenu";
 import MobileLinks from "./MobileLinks";
+import { useSelector } from "react-redux";
+import { RootState } from "../../redux";
+// import { useCheckTokenQuery } from "../../redux/api/customer-api";
 // import Switch from "../switcher/Switcher";
 
 const Header = () => {
-  // const token = useSelector((state: RootState) => state.token.accessToken);
+  const token = useSelector((state: RootState) => state.token.access_token);
   // const { data, isFetching, isSuccess } = useCheckTokenQuery(undefined, {
   //   skip: !token,
   // });
-
-  // const [isOpen, setIsOpen] = useState(false);
 
   const navigate = useNavigate();
   return (
@@ -63,7 +60,7 @@ const Header = () => {
               className="w-7 h-7 cursor-pointer hover:text-gray-500 duration-150"
             />
             <LuUser
-              onClick={() => navigate("/sign-up")}
+              onClick={() => navigate(token ? "/auth/profile" : "/sign-up")}
               className="w-7 h-7 cursor-pointer hover:text-gray-500 duration-150"
             />
             {/* <Switch /> */}
