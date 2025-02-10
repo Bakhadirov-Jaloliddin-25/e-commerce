@@ -5,10 +5,18 @@ import SlidingMenu from "./SlidingMenu";
 const Menu = () => {
   const [isOpen, setIsOpen] = useState(false);
 
+  const handleCloseMenu = () => {
+    setIsOpen(false);
+  };
+
   return (
     <StyledWrapper className="relative">
       <label className="hamburger">
-        <input type="checkbox" onChange={() => setIsOpen(!isOpen)} />
+        <input
+          type="checkbox"
+          checked={isOpen}
+          onChange={() => setIsOpen(!isOpen)}
+        />
         <svg viewBox="0 0 32 32">
           <path
             className="line line-top-bottom"
@@ -22,7 +30,7 @@ const Menu = () => {
           isOpen ? "border-b" : ""
         }`}
       >
-        <SlidingMenu isOpen={isOpen} setIsOpen={setIsOpen} />
+        <SlidingMenu isOpen={isOpen} setIsOpen={handleCloseMenu} />
       </div>
     </StyledWrapper>
   );
@@ -38,19 +46,16 @@ const StyledWrapper = styled.div`
   }
 
   .hamburger svg {
-    /* The size of the SVG defines the overall size */
-    height: 2em; /* Reduced the size by 4px */
-    /* Define the transition for transforming the SVG */
+    height: 2em;
     transition: transform 600ms cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   .line {
     fill: none;
-    stroke: black; /* Stroke color remains black */
+    stroke: black;
     stroke-linecap: round;
     stroke-linejoin: round;
-    stroke-width: 2px; /* Reduced stroke width by 4px */
-    /* Define the transition for transforming the Stroke */
+    stroke-width: 2px;
     transition: stroke-dasharray 600ms cubic-bezier(0.4, 0, 0.2, 1),
       stroke-dashoffset 600ms cubic-bezier(0.4, 0, 0.2, 1);
   }
