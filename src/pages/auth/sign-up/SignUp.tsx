@@ -5,7 +5,6 @@ const SignUp = () => {
   const navigate = useNavigate();
   return (
     <div className="container flex flex-col lg:flex-row mt-10 mb-20 gap-10 items-center">
-      {/* Image Section */}
       <div className="w-full lg:w-1/2">
         <img
           src={sign_photo}
@@ -13,8 +12,6 @@ const SignUp = () => {
           className="w-full max-w-md mx-auto lg:max-w-full"
         />
       </div>
-
-      {/* Form Section */}
       <div className="w-full lg:w-1/2 flex justify-center items-center px-4 lg:pl-32">
         <div className="w-full max-w-sm flex flex-col justify-center items-center font-poppins">
           <form action="/">
